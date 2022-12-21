@@ -8,7 +8,7 @@ public class CustomDateTest {
 
 	/**
 	 * Test method for {@link org.teamA02.iso.CustomDate#IsLeap()}.
-	 * For this test method we have used the test suite using each use
+	 * For this test method we have used the test suite using each use and any of pairwise
 	 */
 	@Test
 	public void TestIsLeap(){
@@ -16,7 +16,8 @@ public class CustomDateTest {
 		assertTrue(new CustomDate(15,5,1992).IsLeap());
 		assertTrue(new CustomDate(28,6,1600).IsLeap());
 		assertFalse(new CustomDate(29,2,1600).IsLeap());
-		assertFalse(new CustomDate(29,1,2021).IsLeap());
+		assertFalse(new CustomDate(30,5,2021).IsLeap());
+		assertTrue(new CustomDate(31,5,1992).IsLeap());
 		
 		try{
 			assertTrue(new CustomDate(-98, -8, -1712).IsLeap());
@@ -55,6 +56,10 @@ public class CustomDateTest {
 		  } catch(IllegalArgumentException e) {}
 		try{
 			assertTrue(new CustomDate(31,-8,1992).DayWithinMonth());
+			fail("Se esperaba excepcion IllegalArgument");
+		  } catch(IllegalArgumentException e) {}
+		try{
+			assertTrue(new CustomDate(200,5,-1792).DayWithinMonth());
 			fail("Se esperaba excepcion IllegalArgument");
 		  } catch(IllegalArgumentException e) {}
 		assertFalse(new CustomDate(31,2,300).DayWithinMonth());
