@@ -18,7 +18,7 @@ public class Date {
 		}
 		this.month = month;
 		
-		if(year<0) {
+		if(year<1) {
 			throw new IllegalArgumentException("Year must be higher than 0");
 		}
 		this.year = year;
@@ -42,11 +42,6 @@ public class Date {
 	
 	//check if the year is a leap year
 	public boolean IsLeap() {
-		boolean is_leap;
-		if ((this.year % 4 == 0) && ((this.year % 100 != 0) || (this.year % 400 == 0)))
-			is_leap=true;
-		else
-			is_leap=false;
-		return is_leap;
+		return ((this.year % 4 == 0) && ((this.year % 100 != 0) || (this.year % 400 == 0)));
 	}
 }
