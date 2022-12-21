@@ -1,43 +1,31 @@
-package org.teamA02.iso.dates;
+package org.teamA02.iso;
 
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
 
 import org.junit.Test;
 
 public class CustomDateTest {
-	
-	private CustomDate wrongDate;
-	private CustomDate correctDate;
-	
-	@Before
-	public void setUp() throws Exception {
-//		wrongDate = new CustomDate('k', 'z', 'l');
+
+	@Test
+	public void TestIsLeap(){
 		
-		correctDate = new CustomDate(23, 8, 2011);
+		assertTrue(new CustomDate(15,5,1992).IsLeap());
+		assertTrue(new CustomDate(28,6,1600).IsLeap());
+		assertFalse(new CustomDate(29,2,1600).IsLeap());
+		assertFalse(new CustomDate(30,5,2021).IsLeap());
+		
+		try{
+			assertTrue(new CustomDate(-98, -8, -1712).IsLeap());
+			fail("Se esperaba excepcion IllegalArgument");
+		  } catch(IllegalArgumentException e) {}
+		try {
+			assertTrue(new CustomDate(200,6,300).IsLeap());
+			fail("Se esperaba excepcion IllegalArgument");
+		  } catch(IllegalArgumentException e) {}
 	}
 	
 	@Test
-	public void testDayWithinMonth() {
-		CustomDate date = new CustomDate(1, 12, 1998);
-		assertEquals(true, date.DayWithinMonth());
+	public void TestDayWithinMonth() {
 		
-		CustomDate date2 = new CustomDate(29, 2, 2021);
-		assertEquals(false, date2.DayWithinMonth());
 	}
-	
-	@Test
-	public void testIsLeap() {
-		CustomDate date = new CustomDate(18, 7, 2001);
-		assertEquals(false, date.IsLeap());
-		
-		CustomDate date2 = new CustomDate(9, 6, 2024);
-		assertEquals(true, date2.IsLeap());
-	}
-
-	
-	
-	
-
 }
