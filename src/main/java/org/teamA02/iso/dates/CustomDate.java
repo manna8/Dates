@@ -41,23 +41,18 @@ package org.teamA02.iso;
 		public boolean IsLeap(){
 			
 			boolean is_leap=false;
-			try {
-				
-				if(DayWithinMonth())
-					if ((this.getYear() % 4 == 0) && ((this.getYear() % 100 != 0) || (this.getYear() % 400 == 0)))
-						if(this.getDay()!=29 || this.getMonth()!=2)
-							is_leap=true;
-					else
-						is_leap=false;
-			}catch(DayWithinMonthException e){
-					System.out.println("The day introduced is not compatible with the month");
-			}
+			if(DayWithinMonth())
+				if ((this.getYear() % 4 == 0) && ((this.getYear() % 100 != 0) || (this.getYear() % 400 == 0)))
+					if(this.getDay()!=29 || this.getMonth()!=2)
+						is_leap=true;
+				else
+					is_leap=false;
 			return is_leap;
 		}
 			
 
 		public int getDay() {
-			return day;
+			return this.day;
 		}
 
 		public void setDay(int day) {
@@ -65,7 +60,7 @@ package org.teamA02.iso;
 		}
 
 		public int getMonth() {
-			return month;
+			return this.month;
 		}
 
 		public void setMonth(int month) {
@@ -73,11 +68,11 @@ package org.teamA02.iso;
 		}
 
 		public int getYear() {
-			return year;
+			return this.year;
 		}
 
 		public void setYear(int year) {
 			this.year = year;
 		}
-
-	}
+		
+}
